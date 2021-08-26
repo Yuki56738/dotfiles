@@ -117,3 +117,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+if [ -e ~/ps1-w.sh ];then
+  echo "Loading ~/ps1-w.sh ..."
+  source ~/ps1-w.sh
+fi
