@@ -90,8 +90,8 @@ fi
 # some more ls aliases
 #alias ll='ls -alF'
 #alias la='ls -A'
-alias ll="ls -lh"
-alias la="ls -alh"
+alias ll='ls -lh'
+alias la='ls -alh'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -116,9 +116,4 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-if [ -e ~/ps1-w.sh ];then
-  echo "Loading ~/ps1-w.sh ..."
-  source ~/ps1-w.sh
 fi
