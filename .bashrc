@@ -88,10 +88,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -lh'
-alias la='ls -alh'
+alias ll='ls -alF'
+alias la='ls -A'
 alias l='ls -CF'
-alias cdg='cd "/mnt/hgfs/G/マイドライブ"'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -116,3 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Created by `pipx` on 2022-02-06 05:58:06
+export PATH="$PATH:/home/mint/.local/bin"
+exec fish
