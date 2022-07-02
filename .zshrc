@@ -1,4 +1,4 @@
-export PATH=/opt/homebrew/bin:/opt/bin:$PATH
+export PATH=/opt/homebrew/bin:/opt/local/bin:$PATH
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
