@@ -1,4 +1,10 @@
-export PATH=/opt/homebrew/bin:/opt/local/bin:$PATH
+ARCH=`uname -m`
+if [[ $ARCH == 'arm64' ]]; then
+  export PATH=/opt/homebrew/bin:/opt/local/bin:/usr/local/bin:$PATH
+else
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+fi
+
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -7,6 +13,7 @@ if type brew &>/dev/null; then
   fi
 #PROMPT="%n ($(arch)):%~"$"%# "
 alias ls="ls -GF"
+alias brew64="/usr/local/bin/brew"
 
 
 # git-promptの読み込み
