@@ -33,7 +33,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
 setopt SHARE_HISTORY
 
-PROMPT='usermac: %B%40<..<%~ %b$(__git_ps1)'
+PROMPT='${HOST}: %B%40<..<%~ %b$(__git_ps1)'
 PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green})❯.%F{red}❯❯❯)%f '
 RPROMPT=''
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -42,7 +42,7 @@ PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 
-alias ls='gls --color=auto'
+alias ls='ls --color=auto'
 alias df="gdf -h"
 
 #source ~/.zsh/flutter-comp.sh
@@ -143,7 +143,7 @@ autoload -U +X bashcompinit && bashcompinit
 
 export PATH=$PATH:~/.local/bin:/Users/user3/.local/flutter/bin
 alias getip="curl ipinfo.io"
-alias tar=gtar
+#alias tar=gtar
 alias applink="find /Volumes/ssd1/Applications -d 1 -exec ln -sf {} /Applications \;;"
 
 
@@ -172,6 +172,7 @@ export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 
 source ~/.zsh/railway
 source ~/.zsh/gh
