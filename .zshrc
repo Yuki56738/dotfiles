@@ -141,7 +141,7 @@ autoload -U +X bashcompinit && bashcompinit
 #if [ -f '/Users/user/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/user/google-cloud-sdk/completion.zsh.inc'; fi
 
 
-export PATH=$PATH:~/.local/bin:/Users/user3/.local/flutter/bin
+#export PATH=$PATH:~/.local/bin:/Users/user3/.local/flutter/bin
 alias getip="curl ipinfo.io"
 #alias tar=gtar
 alias applink="find /Volumes/ssd1/Applications -d 1 -exec ln -sf {} /Applications \;;"
@@ -154,9 +154,9 @@ if [ -f '/Users/user3/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/user3/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/user3/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/user3/google-cloud-sdk/completion.zsh.inc'; fi
 
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+#export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
-export PATH=~/flutter/bin:$PATH
+#export PATH=~/flutter/bin:$PATH
 
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -167,15 +167,15 @@ if type brew &>/dev/null; then
     autoload -Uz compinit
     compinit
 fi
-export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+#export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+#export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
+#export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+#export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+#export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+#PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 
-source ~/.zsh/railway
-source ~/.zsh/gh
+#source ~/.zsh/railway
+#source ~/.zsh/gh
 #source ~/.zsh/npm
 #if type brew &>/dev/null; then
 #    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -183,3 +183,6 @@ source ~/.zsh/gh
 #    autoload -Uz compinit
 #    compinit
 #  fi
+
+export PATH=~/.local/flutter/bin:$PATH
+source ~/.zsh/flutter.sh
