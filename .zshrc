@@ -1,4 +1,11 @@
-export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+#export PATH="/opt/homebrew/bin:$PATH"
 #export PATH=/opt/local/bin:$PATH
 
 #eval "$(starship init zsh)"
@@ -36,7 +43,7 @@ setopt SHARE_HISTORY
 PROMPT='${HOST}: %B%40<..<%~ %b$(__git_ps1)'
 PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green})❯.%F{red}❯❯❯)%f '
 RPROMPT=''
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -159,7 +166,7 @@ if [ -f '/Users/user3/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/use
 #export PATH=~/flutter/bin:$PATH
 
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+#export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -186,3 +193,9 @@ fi
 
 export PATH=~/.local/flutter/bin:$PATH
 source ~/.zsh/flutter.sh
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+autoload -Uz compinit
+compinit
+PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+
