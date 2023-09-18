@@ -1,12 +1,28 @@
-export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-export HOMEBREW_REPOSITORY="/opt/homebrew";
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+ARCH=$(uname -m)
+if [[ $ARCH == arm64 ]]; then
+	export HOMEBREW_PREFIX="/opt/homebrew";
+	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+	export HOMEBREW_REPOSITORY="/opt/homebrew";
+	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+	PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+	if type brew &>/dev/null; then
+	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+	
+	    autoload -Uz compinit
+	    compinit
+	fi
+	export PATH=~/.local/flutter/bin:$PATH
+	source ~/.zsh/flutter.sh
+	export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+	autoload -Uz compinit
+	compinit
+	PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+fi
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -40,16 +56,12 @@ PROMPT='${HOST}: %B%40<..<%~ %b$(__git_ps1)'
 PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green})❯.%F{red}❯❯❯)%f '
 RPROMPT=''
 
-PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-
 
 alias ls='ls --color=auto'
 alias df="gdf -h"
 
 autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
-alias applink="find /Volumes/ssd1/Applications -d 1 -exec ln -sf {} /Applications \;;"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/user3/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/user3/google-cloud-sdk/path.zsh.inc'; fi
@@ -57,17 +69,4 @@ if [ -f '/Users/user3/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/user3/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/user3/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/user3/google-cloud-sdk/completion.zsh.inc'; fi
 
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit
-fi
-export PATH=~/.local/flutter/bin:$PATH
-source ~/.zsh/flutter.sh
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-autoload -Uz compinit
-compinit
-PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 
