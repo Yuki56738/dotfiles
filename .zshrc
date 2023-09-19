@@ -17,7 +17,6 @@ if [[ $ARCH == arm64 ]]; then
 	fi
 	export PATH=~/.local/flutter/bin:$PATH
 	source ~/.zsh/flutter.sh
-	export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 	autoload -Uz compinit
 	compinit
@@ -63,10 +62,7 @@ alias df="gdf -h"
 autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/user3/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/user3/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/user3/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/user3/google-cloud-sdk/completion.zsh.inc'; fi
-
-
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
