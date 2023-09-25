@@ -21,6 +21,20 @@ if [[ $ARCH == arm64 ]]; then
 	autoload -Uz compinit
 	compinit
 	PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+	export SDKMAN_DIR="$HOME/.sdkman"
+	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+else
+	# export HOMEBREW_PREFIX="/usr/local";
+	# export HOMEBREW_CELLAR="/usr/local/Cellar";
+	# export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+	# export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+	# export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+	# export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+	eval $(/usr/local/bin/brew shellenv)
+	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	export VCPKG_ROOT="$HOME/vcpkg"
+	#export CPPFLAGS="-I/Users/user/vcpkg/installed/x64-osx/include:$CPPFLAGS"
+	#export LDFLAGS="-L/Users/user/vcpkg/installed/x64-osx/lib:$LDFLAGS"
 fi
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
@@ -63,6 +77,3 @@ autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
