@@ -1,14 +1,9 @@
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
-	export HOMEBREW_PREFIX="/opt/homebrew";
-	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-	export HOMEBREW_REPOSITORY="/opt/homebrew";
-	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+	eval $(/opt/homebrew/bin/brew shellenv)
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-	PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+	#PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+	#PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 	if type brew &>/dev/null; then
 	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 	
@@ -23,18 +18,10 @@ if [[ $ARCH == arm64 ]]; then
 	PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+	export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 else
-	# export HOMEBREW_PREFIX="/usr/local";
-	# export HOMEBREW_CELLAR="/usr/local/Cellar";
-	# export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
-	# export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
-	# export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
-	# export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
-	eval $(/usr/local/bin/brew shellenv)
+	#eval $(/usr/local/bin/brew shellenv)
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	export VCPKG_ROOT="$HOME/vcpkg"
-	#export CPPFLAGS="-I/Users/user/vcpkg/installed/x64-osx/include:$CPPFLAGS"
-	#export LDFLAGS="-L/Users/user/vcpkg/installed/x64-osx/lib:$LDFLAGS"
 fi
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
@@ -70,9 +57,10 @@ PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green
 RPROMPT=''
 
 
-alias ls='ls --color=auto'
-alias df="gdf -h"
-
+#alias ls='ls --color=auto'
+export LSCOLORS=cxfxcxdxbxegedabagacad
+alias ll='ls -lGF'
+alias ls='ls -GF'
 autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
 
