@@ -2,8 +2,8 @@ ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
 	eval $(/opt/homebrew/bin/brew shellenv)
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	#PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-	#PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+	PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+	PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 	if type brew &>/dev/null; then
 	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 	
@@ -57,11 +57,12 @@ PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green
 RPROMPT=''
 
 
-#alias ls='ls --color=auto'
+alias ls='ls --color=auto'
 export LSCOLORS=cxfxcxdxbxegedabagacad
 alias ll='ls -lGF'
-alias ls='ls -GF'
+#alias ls='ls -GF'
 autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
+alias la='ls -lGFa'
 
 
