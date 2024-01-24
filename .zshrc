@@ -28,6 +28,11 @@ if [[ $ARCH == arm64 ]]; then
 	eval "$(gh completion -s zsh)"
 	eval "$(rbenv init - zsh)"
 	NODE_BINARY=/opt/homebrew/bin/node
+	export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+	
+	export PATH=$HOME/.local/flutter/bin:$PATH
+	
+	export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
 else
 	#eval $(/usr/local/bin/brew shellenv)
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -80,11 +85,7 @@ alias la='ls -lGFa'
 
 
 
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
-export PATH=$HOME/.local/flutter/bin:$PATH
-
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
