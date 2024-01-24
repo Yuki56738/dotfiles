@@ -1,9 +1,15 @@
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
-	eval $(/opt/homebrew/bin/brew shellenv)
+	#eval $(/opt/homebrew/bin/brew shellenv)
+	export HOMEBREW_PREFIX="/opt/homebrew";
+	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+	export HOMEBREW_REPOSITORY="/opt/homebrew";
+	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-	PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+	#PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+	#PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 	if type brew &>/dev/null; then
 	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 	
@@ -19,10 +25,17 @@ if [[ $ARCH == arm64 ]]; then
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 	export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+	eval "$(gh completion -s zsh)"
+	eval "$(rbenv init - zsh)"
+	NODE_BINARY=/opt/homebrew/bin/node
 else
 	#eval $(/usr/local/bin/brew shellenv)
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+#function useport(){
+#	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+#}
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -64,5 +77,16 @@ alias ll='ls -lGF'
 autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
 alias la='ls -lGFa'
+
+
+
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+export PATH=$HOME/.local/flutter/bin:$PATH
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
