@@ -1,6 +1,5 @@
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
-	#eval $(/opt/homebrew/bin/brew shellenv)
 	export HOMEBREW_PREFIX="/opt/homebrew";
 	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 	export HOMEBREW_REPOSITORY="/opt/homebrew";
@@ -8,17 +7,15 @@ if [[ $ARCH == arm64 ]]; then
 	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	#PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-	#PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 	if type brew &>/dev/null; then
-	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+	    FPATH=$/opt/homebrew/share/zsh-completions:$FPATH
 	
 	    autoload -Uz compinit
 	    compinit
 	fi
 	export PATH=~/.local/flutter/bin:$PATH
 	source ~/.zsh/flutter.sh
-	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+	FPATH="$/opt/homebrew/share/zsh/site-functions:${FPATH}"
 	autoload -Uz compinit
 	compinit
 	PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
@@ -27,20 +24,17 @@ if [[ $ARCH == arm64 ]]; then
 	export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 	eval "$(gh completion -s zsh)"
 	eval "$(rbenv init - zsh)"
-	NODE_BINARY=/opt/homebrew/bin/node
 	export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 	
-	export PATH=$HOME/.local/flutter/bin:$PATH
 	
 	export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
+	export PATH=~/.nodenv/shims:$PATH
+	source ~/.zsh/git-flow-completion.plugin.zsh
+
 else
-	#eval $(/usr/local/bin/brew shellenv)
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-#function useport(){
-#	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-#}
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -75,7 +69,8 @@ PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green
 RPROMPT=''
 
 
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
+alias ls='ls -G'
 export LSCOLORS=cxfxcxdxbxegedabagacad
 alias ll='ls -lGF'
 #alias ls='ls -GF'
@@ -91,3 +86,21 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
+
+
+# Herd injected NVM configuration
+export NVM_DIR="/Users/user/Library/Application Support/Herd/config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[[ -f "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh" ]] && builtin source "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh"
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/user/Library/Application Support/Herd/config/php/82/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/user/Library/Application Support/Herd/bin/":$PATH
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export LIBRARY_PATH=$LIBRARY_PATH:$/opt/homebrew/opt/zstd/lib
+#export PATH=~/Qt/6.6.2/macos/bin:$PATH
+export PATH=/usr/local/bin:$PATH
