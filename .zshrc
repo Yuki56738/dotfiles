@@ -18,18 +18,21 @@ if [[ $ARCH == arm64 ]]; then
 	FPATH="$/opt/homebrew/share/zsh/site-functions:${FPATH}"
 	autoload -Uz compinit
 	compinit
+	PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 	PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 	export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 	eval "$(gh completion -s zsh)"
-	eval "$(rbenv init - zsh)"
+	#eval "$(rbenv init - zsh)"
+	source ~/.zsh/rbenv.sh
 	export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 	
 	
 	export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
 	export PATH=~/.nodenv/shims:$PATH
 	source ~/.zsh/git-flow-completion.plugin.zsh
+	export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 else
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -69,8 +72,8 @@ PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green
 RPROMPT=''
 
 
-#alias ls='ls --color=auto'
-alias ls='ls -G'
+alias ls='ls --color=auto'
+#alias ls='ls -G'
 export LSCOLORS=cxfxcxdxbxegedabagacad
 alias ll='ls -lGF'
 #alias ls='ls -GF'
@@ -100,7 +103,7 @@ export HERD_PHP_82_INI_SCAN_DIR="/Users/user/Library/Application Support/Herd/co
 
 # Herd injected PHP binary.
 export PATH="/Users/user/Library/Application Support/Herd/bin/":$PATH
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-export LIBRARY_PATH=$LIBRARY_PATH:$/opt/homebrew/opt/zstd/lib
-#export PATH=~/Qt/6.6.2/macos/bin:$PATH
-export PATH=/usr/local/bin:$PATH
+export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
+export PATH=~/Qt/6.6.2/macos/bin:$PATH
+#export PATH=/usr/local/bin:$PATH
+PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
