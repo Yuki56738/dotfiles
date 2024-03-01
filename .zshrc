@@ -38,6 +38,9 @@ else
 	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+useport(){
+	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+}
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -104,6 +107,6 @@ export HERD_PHP_82_INI_SCAN_DIR="/Users/user/Library/Application Support/Herd/co
 # Herd injected PHP binary.
 export PATH="/Users/user/Library/Application Support/Herd/bin/":$PATH
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
-export PATH=~/Qt/6.6.2/macos/bin:$PATH
+#export PATH=~/Qt/6.6.2/macos/bin:$PATH
 #export PATH=/usr/local/bin:$PATH
 PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
