@@ -18,11 +18,11 @@ if [[ $ARCH == arm64 ]]; then
 	FPATH="$/opt/homebrew/share/zsh/site-functions:${FPATH}"
 	autoload -Uz compinit
 	compinit
-	PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-	PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+	#PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+	#PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-	export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+	#export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 	eval "$(gh completion -s zsh)"
 	#eval "$(rbenv init - zsh)"
 	source ~/.zsh/rbenv.sh
@@ -35,7 +35,13 @@ if [[ $ARCH == arm64 ]]; then
 	export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 else
-	source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	#source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	#export HOMEBREW_PREFIX="/usr/local";
+	#export HOMEBREW_CELLAR="/usr/local/Cellar";
+	#export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+	#export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+	#export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+	#export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 fi
 
 useport(){
@@ -75,15 +81,16 @@ PROMPT+='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green
 RPROMPT=''
 
 
-alias ls='ls --color=auto'
-#alias ls='ls -G'
+#alias ls='ls --color=auto'
+alias ls='ls -G'
 export LSCOLORS=cxfxcxdxbxegedabagacad
 alias ll='ls -lGF'
 #alias ls='ls -GF'
 autoload -U +X bashcompinit && bashcompinit
 alias getip="curl ipinfo.io"
 alias la='ls -lGFa'
-
+alias enableaptx='sudo defaults write bluetoothaudiod "Enable AptX codec" -bool true'
+alias lla='ls -a'
 
 
 
@@ -109,4 +116,6 @@ export PATH="/Users/user/Library/Application Support/Herd/bin/":$PATH
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
 #export PATH=~/Qt/6.6.2/macos/bin:$PATH
 #export PATH=/usr/local/bin:$PATH
-PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+#PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
+
