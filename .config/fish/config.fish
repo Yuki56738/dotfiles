@@ -3,6 +3,8 @@ if status is-interactive
 	alias la 'ls -alG'
 	alias gls 'gls --color=auto'
 	alias lh 'ls -alh'
+	alias htop 'sudo htop'
+	fish_add_path /usr/local/bin
 	set -gx HOMEBREW_PREFIX "/opt/homebrew";
 	set -gx HOMEBREW_CELLAR "/opt/homebrew/Cellar";
 	set -gx HOMEBREW_REPOSITORY "/opt/homebrew";
@@ -15,5 +17,5 @@ if status is-interactive
 	fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin
 	fish_add_path /Users/user/Library/Application Support/JetBrains/Toolbox/scripts
 	fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
-	fish_add_path /usr/local/bin
+	status --is-interactive; and rbenv init - fish | source
 end
