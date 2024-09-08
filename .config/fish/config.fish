@@ -1,21 +1,24 @@
 if status is-interactive
-	# Commands to run in interactive sessions can go here
+    # Commands to run in interactive sessions can go here
+	fish_add_path /opt/homebrew/bin
+	fish_add_path /opt/homebrew/sbin
+    	fish_add_path /usr/local/bin
+	fish_add_path /opt/homebrew/opt/gnu-tar/libexec/gnubin
 	alias la 'ls -alG'
 	alias gls 'gls --color=auto'
 	alias lh 'ls -alh'
 	alias htop 'sudo htop'
-	fish_add_path /usr/local/bin
-	set -gx HOMEBREW_PREFIX "/opt/homebrew";
-	set -gx HOMEBREW_CELLAR "/opt/homebrew/Cellar";
-	set -gx HOMEBREW_REPOSITORY "/opt/homebrew";
-	fish_add_path -gP "/opt/homebrew/bin" "/opt/homebrew/sbin";
-	! set -q MANPATH; and set MANPATH ''; set -gx MANPATH "/opt/homebrew/share/man" $MANPATH;
-	! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "/opt/homebrew/share/info" $INFOPATH;
+	alias ls 'ls -G'
+	set -x ANDROID_HOME /Users/user/Library/Android/sdk
+	#fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
+	fish_add_path $ANDROID_HOME/platform-tools
+	fish_add_path /opt/homebrew/opt/openjdk@17/bin
+	fish_add_path ~/go/bin
+	alias cdd 'cd ~/Documents/dev'
 	function useport
-		set -a PATH /opt/local/bin
+		set -xp PATH /opt/local/bin
 	end
-	fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin
-	fish_add_path /Users/user/Library/Application Support/JetBrains/Toolbox/scripts
-	fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
-	status --is-interactive; and rbenv init - fish | source
 end
+
+# Added by `rbenv init` on 2024年 8月 3日 土曜日 10時02分59秒 JST
+status --is-interactive; and rbenv init - --no-rehash fish | source
