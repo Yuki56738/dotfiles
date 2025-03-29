@@ -19,9 +19,16 @@ if status is-interactive
     alias iclcd='cd "/Users/user/Library/Mobile Documents/com~apple~CloudDocs"'
     alias ndate='date -Idate -Ihours'
     alias n2date='date +%Y-%m-%d-%H%M'
+    alias plnt='afplay /System/Library/Sounds/Hero.aiff'
+    alias llh='ls -lh'
 
     fish_add_path $HOME/.local/bin
+    fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
+    fish_add_path /opt/homebrew/opt/gnu-tar/libexec/gnubin
     function useport
         set -xp PATH /opt/local/bin
     end
 end
+
+# Added by `rbenv init` on 月  1  6 07:29:32 JST 2025
+status --is-interactive; and rbenv init - --no-rehash fish | source
